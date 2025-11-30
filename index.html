@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Random Photo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* use 'cover' if you prefer fill+crop */
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img id="photo" alt="Random event photo" />
+  </div>
+
+  <script>
+    // List of your image paths inside the repo
+    const images = [
+      "BrookdalePics/1.jpg",
+      "BrookdalePics/2.jpg",
+      "BrookdalePics/3.jpg",
+      "BrookdalePics/4.jpg",
+      "BrookdalePics/5.jpg",
+      "BrookdalePics/6.jpg",
+      "BrookdalePics/7.jpg",
+      "BrookdalePics/8.jpg",
+      "BrookdalePics/9.jpg",
+      "BrookdalePics/10.jpg",
+      "BrookdalePics/11.jpg",
+      "BrookdalePics/12.jpg",
+      "BrookdalePics/13.jpg",
+      "BrookdalePics/14.jpg",
+      "BrookdalePics/15.jpg",
+      "BrookdalePics/16.jpg",
+      "BrookdalePics/17.jpg",
+      "BrookdalePics/18.jpg",
+      "BrookdalePics/19.jpg",
+      "BrookdalePics/20.jpg",
+      
+      // add more lines as needed
+    ];
+
+    function getRandomImage() {
+      const i = Math.floor(Math.random() * images.length);
+      return images[i];
+    }
+
+    function showRandomImage() {
+      const img = document.getElementById("photo");
+      const randomSrc = getRandomImage();
+
+      // Add timestamp to bust aggressive caching on signage devices
+      img.src = randomSrc + "?t=" + Date.now();
+    }
+
+    // Show a random image when the page loads
+    showRandomImage();
+  </script>
+</body>
+</html>
